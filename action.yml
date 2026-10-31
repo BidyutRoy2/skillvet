@@ -1,0 +1,26 @@
+name: "skillvet"
+description: "Scan AI agent skills and MCP configs for dangerous patterns and fail CI on risky findings."
+author: "skillvet contributors"
+inputs:
+  path:
+    description: "Skill file or directory to scan"
+    required: false
+    default: "."
+  fail-on:
+    description: "Lowest severity that fails the job: low, medium, high or critical"
+    required: false
+    default: "high"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - name: Run skillvet
+      shell: bash
+      run: |
+        pip install "${{ github.action_path }}"
+        skillvet scan "${{ inputs.path }}" --fail-on "${{ inputs.fail-on }}"
+branding:
+  icon: "shield"
+  color: "green"
