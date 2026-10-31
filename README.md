@@ -32,7 +32,7 @@ You would not run a random shell script from the internet without reading it.
 
 ```bash
 # no install needed if you have Python 3.9+
-git clone https://github.com/<your-username>/skillvet.git
+git clone https://github.com/BidyutRoy2/skillvet.git
 cd skillvet
 
 # scan one skill
